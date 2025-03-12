@@ -17,15 +17,10 @@ public class CloudVendorController
     }
 
     @GetMapping("{vendorId}")
-
-    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId)
     {
-        return cloudVendorService.getCloudVendorDetails(vendorId);
-
     }
 
     @GetMapping()
-
     public List<CloudVendor> getAllCloudVendorDetails()
     {
         return cloudVendorService.getAllCloudVendorDetails();
