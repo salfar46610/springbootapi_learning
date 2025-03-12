@@ -2,11 +2,14 @@ package com.learnfarooq.learn_api_sbjava.controller;
 
 import com.learnfarooq.learn_api_sbjava.model.CloudVendor;
 import com.learnfarooq.learn_api_sbjava.repository.CloudVendorRepository;
+import com.learnfarooq.learn_api_sbjava.response.ResponseHandler;
 import com.learnfarooq.learn_api_sbjava.service.CloudVendorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//hiii
+
 @RestController
 @RequestMapping("/apiendpointvendor")
 public class CloudVendorController
@@ -17,7 +20,10 @@ public class CloudVendorController
     }
 
     @GetMapping("{vendorId}")
+    public ResponseEntity<Object> getCloudVendorDetails (@PathVariable("vendorId") String vendorId)
     {
+        return ResponseHandler.responseBuilder("Requested Vendor Details below",
+                HttpStatus.OK,cloudVendorService.getCloudVendorDetails(vendorId));
     }
 
     @GetMapping()
